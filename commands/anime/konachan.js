@@ -1,5 +1,5 @@
 /**
- * Neko Command - Get random neko anime images
+ * Konachan Command - Get random konachan anime images
  */
 
 const axios = require('axios');
@@ -7,15 +7,15 @@ const fs = require('fs');
 const path = require('path');
 const { getTempDir, deleteTempFile } = require('../../utils/tempManager');
 
-const BASE = 'https://api.princetechn.com/api/anime/neko';
+const BASE = 'https://api.princetechn.com/api/anime/konachan';
 const API_KEY = 'prince';
 
 module.exports = {
-  name: 'neko',
-  aliases: ['nekosfw'],
+  name: 'konachan',
+  aliases: ['konachansfw'],
   category: 'anime',
-  desc: 'Get random neko SFW anime images',
-  usage: 'neko',
+  desc: 'Get random konachan SFW anime images',
+  usage: 'konachan',
   execute: async (sock, msg, args, extra) => {
     try {
       // Fetch JSON from API to get image URL
@@ -77,7 +77,7 @@ module.exports = {
       // Write to temp file first, then read back to ensure buffer is valid
       const tempDir = getTempDir();
       const timestamp = Date.now();
-      const tempImagePath = path.join(tempDir, `neko_${timestamp}.${extension}`);
+      const tempImagePath = path.join(tempDir, `konachan_${timestamp}.${extension}`);
       
       let finalBuffer = null;
       
@@ -107,7 +107,7 @@ module.exports = {
       }
       
     } catch (error) {
-      console.error('Error in neko command:', error);
+      console.error('Error in konachan command:', error);
       
       // Handle specific error cases
       if (error.response?.status === 404) {
@@ -117,7 +117,7 @@ module.exports = {
       } else if (error.code === 'ECONNABORTED' || error.message.includes('timeout')) {
         await extra.reply('❌ Request timed out. Please try again.');
       } else {
-        await extra.reply(`❌ Failed to fetch neko image: ${error.message}`);
+        await extra.reply(`❌ Failed to fetch konachan image: ${error.message}`);
       }
     }
   }
