@@ -1,0 +1,19 @@
+{
+  "name": "𝗝𝗨𝗣𝗜𝗧𝗘𝗥 𝗠𝗗",
+  "description": "WhatsApp MD bot (Baileys)",
+  "repository": "",
+  "keywords": ["whatsapp", "baileys", "bot", "node"],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
+    }
+  ],
+  "env": {
+    "SESSION_ID": {
+      "description": "𝗝𝗨𝗣𝗜𝗧𝗘𝗥 𝗠𝗗 session string (e.g. 𝗝𝗨𝗣𝗜𝗧𝗘𝗥 𝗠𝗗!<base64_compressed_data>)",
+      "required": false,
+      "value": ""
+    }
+  }
+}
+
